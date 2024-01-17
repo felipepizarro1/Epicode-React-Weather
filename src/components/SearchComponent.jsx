@@ -5,14 +5,14 @@ export default function SearchComponent({updateContent}) {
 
 
     
-    const [city, setCity] = useState(["Lisboa"]);
+    const [city, setCity] = useState(["Santiago"]);
 
 
     useEffect(()=>{
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
         .then(response => response.json())
         .then(json => {
-            console.log(json);
+            console.log("dati del api: " + json.name);
             updateContent(json); //dati inviati a app
         })
 
@@ -23,6 +23,9 @@ export default function SearchComponent({updateContent}) {
 
   return (
     
-    <div>SearchComponent</div>
+    <div>
+        <p  class="light-text suggestion" onClick={()=>setCity("Athens")}>Athens</p>
+        <p  class="light-text suggestion" onClick={()=>setCity("London")}>London</p>
+    </div>
   )
 }

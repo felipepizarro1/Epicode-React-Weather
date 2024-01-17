@@ -20,6 +20,7 @@ function App() {
       <SearchComponent updateContent={updateContent}/>
       <ContentComponent content={content}/>
 
+
     </>
   );
 }
