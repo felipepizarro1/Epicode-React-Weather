@@ -6,6 +6,7 @@ import ContentComponent from './components/ContentComponent';
 function App() {
 
   const [content, setContent ] = useState([]);
+  const [forecast, setForecast] = useState([]);
 
     const updateContent = (searchData) => {
       setContent(searchData);
@@ -13,13 +14,14 @@ function App() {
       //così, aggiorna lo state de app con i suoi dati
     }
 
-  
+    const updateForecast = (searchData) => {
+      setForecast(searchData)
+    }
 
   return (
     <>
-      <SearchComponent updateContent={updateContent}/>
-      <ContentComponent content={content}/>
-
+      <SearchComponent updateContent={updateContent} updateForecast={updateForecast}/>
+      <ContentComponent content={content} forecast={forecast}/>
 
     </>
   );
