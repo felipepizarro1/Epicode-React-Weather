@@ -1,23 +1,26 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import SearchComponent from './components/SearchComponent';
+import ContentComponent from './components/ContentComponent';
 
 function App() {
 
-  const API_KEY = "84ea03d648cf9492e6c4d8b23085e149";
+  const [content, setContent ] = useState([]);
 
-  const [weatherData, setWeatherData ] = useState([]);
+    const updateContent = (searchData) => {
+      setContent(searchData);
+      //questa funzione va come props al searchComponent
+      //così, aggiorna lo state de app con i suoi dati
+    }
 
-  useEffect(()=>{
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Milano&appid=${API_KEY}&units=metric`)
-    .then(response => response.json())
-    .then(data => setWeatherData(data))
-
-  },[])
+  
 
   return (
-    <div className="App">
-        {console.log(weatherData)}
-    </div>
+    <>
+      <SearchComponent updateContent={updateContent}/>
+      <ContentComponent content={content}/>
+
+    </>
   );
 }
 
