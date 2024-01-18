@@ -1,11 +1,11 @@
+import { MDBInputGroup } from 'mdb-react-ui-kit'
 import React, { useState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form';
-import { Button, Dropdown, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
-export default function SearchComponent({updateContent, updateForecast}) {
+export default function SearchCardComponent({updateContent, updateForecast}) {
     const API_KEY = "1058c937d20ab635a3c30bd2a8cbed5e";
 
-    const [city, setCity] = useState([""]);
+    const [city, setCity] = useState(["Santiago"]);
     const [suggestions, setSuggestions] = useState([]);
 
     //chiamata weather
@@ -66,23 +66,27 @@ export default function SearchComponent({updateContent, updateForecast}) {
         setSuggestions([]); // Limpiar las sugerencias
       };
 
-    
-
   return (
-    
     <>
-        <h1>Search Component</h1>
-        <Form>
-                <Form.Group className="mb-3">
-                    <Form.Control 
-                        type="text" 
-                        placeholder="Insert City Name" 
-                        onChange={handleInputChange} 
-                        value={city}
-                        style={{ width: '200px' }} />
-                </Form.Group>
-            </Form>
-            {suggestions.length > 0 && (
+    <MDBInputGroup className="mx-auto w-25 mt-4" >
+              <input
+                className="form-control rounded"
+                type="text"
+                placeholder="City"
+                onChange={handleInputChange} 
+                value={city}
+                 
+              />
+              <a href="#!" type="button">
+                <span
+                  className="input-group-text border-0 fw-bold"
+                  id="search-addon"
+                >
+                  Check!
+                </span>
+              </a>
+    </MDBInputGroup>
+    {suggestions.length > 0 && (
                 <ListGroup style={{ width: '200px' }}> 
                     {suggestions.map((suggestion, index) => (
                         <ListGroup.Item key={index} onClick={() => handleSuggestionClick(suggestion)}>
@@ -90,7 +94,7 @@ export default function SearchComponent({updateContent, updateForecast}) {
                         </ListGroup.Item>
                     ))}
                 </ListGroup>
-            )}
+        )}
     </>
   )
 }

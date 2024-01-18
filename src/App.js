@@ -2,6 +2,9 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import SearchComponent from './components/SearchComponent';
 import ContentComponent from './components/ContentComponent';
+import MainCardComponent from './components/MainCardComponent';
+import ForecastComponent from './components/ForecastComponent';
+import SearchCardComponent from './components/SearchCardComponent';
 
 function App() {
 
@@ -20,8 +23,11 @@ function App() {
 
   return (
     <>
-      <SearchComponent updateContent={updateContent} updateForecast={updateForecast}/>
-      <ContentComponent content={content} forecast={forecast}/>
+      <SearchCardComponent updateContent={updateContent} updateForecast={updateForecast}/>
+      <MainCardComponent content={content}/> 
+      <ForecastComponent forecast={forecast}/>
+      {/* <SearchComponent updateContent={updateContent} updateForecast={updateForecast}/>
+      <ContentComponent /> */}
 
     </>
   );
