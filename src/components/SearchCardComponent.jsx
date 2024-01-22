@@ -79,7 +79,10 @@ export default function SearchCardComponent({updateContent, updateForecast}) {
   return (
     <>
     <form onSubmit={handleSubmit} >
-        <MDBInputGroup className='mx-auto w-25 mt-4' >
+        <div className='mx-auto w-25 w-sm-auto mt-4'>
+
+        
+        <MDBInputGroup  >
               <input
                 className="form-control rounded"
                 type="text"
@@ -92,9 +95,10 @@ export default function SearchCardComponent({updateContent, updateForecast}) {
                   Check!
                 </button>
         </MDBInputGroup>
+        </div>
     </form>
     {suggestions.length > 0 && (
-                <ListGroup style={{ width: '200px' }}> 
+                <ListGroup style={{ width: '1300px' }} className='d-flex justify-content-center align-items-center h-100'> 
                     {suggestions.map((suggestion, index) => (
                         <ListGroup.Item key={index} onClick={() => handleSuggestionClick(suggestion)}>
                             {suggestion}

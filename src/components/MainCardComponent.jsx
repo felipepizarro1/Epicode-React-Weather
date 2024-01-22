@@ -19,7 +19,7 @@ export default function MainCardComponent({updateContent, updateForecast, conten
         return <div>No data available</div>;
       }
       if (!content.main) {
-        return <div className="">Please insert a city</div>;
+        return <div className="d-flex mt-3 justify-content-center align-items-center h-100">Please insert a city</div>;
       }
     console.log("this is content " + content.main.temp);
    
