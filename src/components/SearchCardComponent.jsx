@@ -5,20 +5,30 @@ import { ListGroup } from 'react-bootstrap';
 export default function SearchCardComponent({updateContent, updateForecast}) {
     const API_KEY = "1058c937d20ab635a3c30bd2a8cbed5e";
 
-    const [city, setCity] = useState(["Santiago"]);
+    const [city, setCity] = useState([""]);
     const [suggestions, setSuggestions] = useState([]);
 
     //chiamata weather
     //chiamata forecast
-    useEffect(() => {
-        if (city) {
-            const timer = setTimeout(() => {
-                chiamataWeather();
-                chiamataForecast();
-            }, 800); // Espera 500 ms después de la última pulsación de tecla
+    // useEffect(() => {
+    //     if (city) {
+    //         const timer = setTimeout(() => {
+    //             chiamataWeather();
+    //             chiamataForecast();
+    //         }, 800); // Espera 500 ms después de la última pulsación de tecla
             
-        }
-    }, [city]);//aggiorna la chiamata quando lo state di city cambia
+    //     }
+    // }, [city]);//aggiorna la chiamata quando lo state di city cambia
+
+
+    //chiamata weather
+    //chiamata forecast
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        chiamataWeather();
+        chiamataForecast();
+      };
 
     
     function chiamataWeather() {
@@ -68,7 +78,8 @@ export default function SearchCardComponent({updateContent, updateForecast}) {
 
   return (
     <>
-    <MDBInputGroup className="mx-auto w-25 mt-4" >
+    <form onSubmit={handleSubmit} >
+        <MDBInputGroup className='mx-auto w-25 mt-4' >
               <input
                 className="form-control rounded"
                 type="text"
@@ -77,15 +88,11 @@ export default function SearchCardComponent({updateContent, updateForecast}) {
                 value={city}
                  
               />
-              <a href="#!" type="button">
-                <span
-                  className="input-group-text border-0 fw-bold"
-                  id="search-addon"
-                >
+               <button type="submit" className="btn btn-primary ">
                   Check!
-                </span>
-              </a>
-    </MDBInputGroup>
+                </button>
+        </MDBInputGroup>
+    </form>
     {suggestions.length > 0 && (
                 <ListGroup style={{ width: '200px' }}> 
                     {suggestions.map((suggestion, index) => (
